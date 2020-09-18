@@ -8,6 +8,7 @@ class EndGameScene extends Phaser.Scene {
 
     preload() {
         this.load.image('end-game', 'assets/images/game-end.jpeg');
+        this.load.image('again','assets/images/play-again.jpg');
     }
 
     create() {
@@ -16,6 +17,12 @@ class EndGameScene extends Phaser.Scene {
             fontSize:48,
             fill:"#fffff0"
         });
+        this.startBtn = this.add.image(config.width / 2, config.height / 2, 'again');
+        this.startBtn.setInteractive();
+        this.startBtn.on('pointerdown',this.againGame,this);
+    }
+    againGame(){
+        this.scene.start('Start');
     }
 
 }

@@ -1,6 +1,6 @@
 class StartGameScene extends Phaser.Scene {
     constructor() {
-        super();
+        super('Start');
     }
 
     preload() {
