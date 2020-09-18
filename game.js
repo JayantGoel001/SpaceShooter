@@ -11,7 +11,7 @@ const config = {
         update : update
     }
 };
-let sky, jet, cursors,ammo,bombs;
+let sky, jet, cursors,ammo,bombs,explosion;
 const game = new Phaser.Game(config);
 
 function preload ()
@@ -59,7 +59,8 @@ function create ()
     this.anims.create({
         key:'explode',
         frames:this.anims.generateFrameNumbers('explosion'),
-        frameRate:20
+        frameRate:20,
+        hideOnComplete:true
     });
 }
 
@@ -71,6 +72,9 @@ function shoot(){
 }
 
 function destroyBomb(ammo,bomb) {
+
+    explosion = this.add.sprite(bomb.x,bomb.y,'explosion').setScale(3);
+    explosion.play('explode');
     bomb.disableBody(true,true);
     ammo.disableBody(true,true);
     let x = Phaser.Math.Between(0,config.width-15);
@@ -79,7 +83,6 @@ function destroyBomb(ammo,bomb) {
     let xVel = Phaser.Math.Between(-100,100);
     let yVel = Phaser.Math.Between(130,180);
     bomb.setVelocity(xVel,yVel);
-
 
 }
 
