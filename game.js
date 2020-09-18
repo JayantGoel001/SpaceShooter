@@ -11,7 +11,7 @@ const config = {
         update : update
     }
 };
-let sky, jet, cursors,ammo,bomb;
+let sky, jet, cursors,ammo,bombs;
 const game = new Phaser.Game(config);
 
 function preload ()
@@ -22,6 +22,15 @@ function preload ()
     this.load.image('ammo','assets/images/ammo.png');
     this.load.image('coin','assets/images/coin.png');
 }
+
+function setObjectVelocity(bombs) {
+    bombs.children.iterate(function (bomb) {
+            let xVel = Phaser.Math.Between(-100,100);
+            let yVel = Phaser.Math.Between(130,180);
+            bomb.setVelocity(xVel,yVel);
+        });
+}
+
 function create ()
 {
     sky = this.add.image(400, 300, 'sky');
@@ -30,7 +39,7 @@ function create ()
     cursors = this.input.keyboard.createCursorKeys();
     this.input.on('pointerdown',shoot,this);
 
-    bomb = this.physics.add.group({
+    bombs = this.physics.add.group({
         key:'bomb',
         repeat:3,
         setXY:{
@@ -40,19 +49,41 @@ function create ()
             stepY: Phaser.Math.Between(15, 300)
         }
     });
+
+    setObjectVelocity(bombs);
 }
 
 function shoot(){
     ammo = this.physics.add.image(jet.x,jet.y,'ammo').setScale(0.1).setOrigin(0.5,0);
     ammo.setRotation(-Phaser.Math.PI2/4);
     ammo.setVelocityY(-600);
-    this.physics.add.collider(ammo,bomb,destroyBomb,null,this);
+    this.physics.add.collider(ammo,bombs,destroyBomb,null,this);
 }
 
-function destroyBomb(bomb,ammo) {
+function destroyBomb(ammo,bomb) {
     bomb.disableBody(true,true);
     ammo.disableBody(true,true);
+    let x = Phaser.Math.Between(0,config.width-15);
+    let y = Phaser.Math.Between(0,200);
+    bomb.enableBody(true,x,y,true,true);
+    let xVel = Phaser.Math.Between(-100,100);
+    let yVel = Phaser.Math.Between(130,180);
+    bomb.setVelocity(xVel,yVel);
 }
+
+function resetPos(bomb) {
+    bomb.y = 0;
+    bomb.x = Phaser.Math.Between(15, config.width - 15);
+}
+
+function checkForRepos(bombs) {
+    bombs.children.iterate(function (bomb) {
+        if (bomb.y>config.height){
+            resetPos(bomb);
+        }
+    })
+}
+
 function update() {
     if (cursors.left.isDown){
         jet.setVelocityX(-150);
@@ -73,4 +104,7 @@ function update() {
     else{
         jet.setVelocityY(0);
     }
+
+
+    checkForRepos(bombs);
 }
