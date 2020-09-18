@@ -4,14 +4,11 @@ class EndGameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('end-game', 'assets/images/game-end.jpg');
+        this.load.image('end-game', 'assets/images/game-end.jpeg');
     }
 
     create() {
-        this.add.image(config.width / 2, config.height / 2, 'end-game');
+        this.add.image(config.width / 2, config.height / 2, 'end-game').setScale(0.75);
     }
 
-    startGame() {
-        this.scene.start('Play');
-    }
 }
