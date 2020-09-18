@@ -17,10 +17,10 @@ const game = new Phaser.Game(config);
 function preload ()
 {
     this.load.image('sky', 'http://labs.phaser.io/assets/skies/space3.png');
-    this.load.image('jet','assets/jet.png');
-    this.load.image('bomb','assets/bomb.png');
-    this.load.image('ammo','assets/ammo.png');
-    this.load.image('coin','assets/coin.png');
+    this.load.image('jet','assets/images/jet.png');
+    this.load.image('bomb','assets/images/bomb.png');
+    this.load.image('ammo','assets/images/ammo.png');
+    this.load.image('coin','assets/images/coin.png');
 }
 function create ()
 {
@@ -43,7 +43,7 @@ function create ()
 }
 
 function shoot(){
-    ammo = this.physics.add.image(jet.x,jet.y,'ammo').setScale(0.1);
+    ammo = this.physics.add.image(jet.x,jet.y,'ammo').setScale(0.1).setOrigin(0.5,0);
     ammo.setRotation(-Phaser.Math.PI2/4);
     ammo.setVelocityY(-600);
     this.physics.add.collider(ammo,bomb,destroyBomb,null,this);
