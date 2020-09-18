@@ -21,6 +21,7 @@ function preload ()
     this.load.image('bomb','assets/images/bomb.png');
     this.load.image('ammo','assets/images/ammo.png');
     this.load.image('coin','assets/images/coin.png');
+    this.load.SpriteSheet('ex')
 }
 
 function setObjectVelocity(bombs) {
@@ -69,6 +70,8 @@ function destroyBomb(ammo,bomb) {
     let xVel = Phaser.Math.Between(-100,100);
     let yVel = Phaser.Math.Between(130,180);
     bomb.setVelocity(xVel,yVel);
+
+
 }
 
 function resetPos(bomb) {
