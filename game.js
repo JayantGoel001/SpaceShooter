@@ -13,7 +13,10 @@ const config = {
     }
 };
 let sky, jet, cursors,ammo,bombs,explosion,gunShot,coinHit,coins;
+let score = 0;
+let scoreText;
 const game = new Phaser.Game(config);
+let gameOver = false;
 
 function preload ()
 {
@@ -47,8 +50,17 @@ function collectCoins(jet,coin) {
     let xVel = Phaser.Math.Between(-100,100);
     let yVel = Phaser.Math.Between(130,180);
     coin.setVelocity(xVel,yVel);
+    score+=10;
+    scoreText.setText('Score : '+score);
 
 }
+
+function endGame(jet,bomb) {
+    this.physics.pause();
+    jet.setTint(0xff1000);
+    gameOver=true;
+}
+
 function create ()
 {
     sky = this.add.tileSprite(config.width/2, 300,config.width,config.height, 'sky');
@@ -75,8 +87,8 @@ function create ()
         coins.create(x,y,'coin').setScale(0.75);
     }
     setObjectVelocity(bombs);
-
     setObjectVelocity(coins);
+
     this.anims.create({
         key:'explode',
         frames:this.anims.generateFrameNumbers('explosion'),
@@ -84,8 +96,14 @@ function create ()
         hideOnComplete:true
     });
     this.physics.add.collider(jet,coins,collectCoins,null,this);
+    this.physics.add.collider(jet,bombs,endGame,null,this);
     gunShot = this.sound.add('gun-shot');
     coinHit = this.sound.add('coinhit');
+
+    scoreText  = this.add.text(15,15,'Score : 0',{
+        fontSize:31,
+        fill:'#19F8B0'
+    });
 }
 function shoot(){
     ammo = this.physics.add.image(jet.x,jet.y,'ammo').setScale(0.1).setOrigin(0.5,0);
@@ -108,6 +126,8 @@ function destroyBomb(ammo,bomb) {
     let xVel = Phaser.Math.Between(-100,100);
     let yVel = Phaser.Math.Between(130,180);
     bomb.setVelocity(xVel,yVel);
+    score+=20;
+    scoreText.setText('Score : '+score);
 
 }
 
@@ -125,6 +145,10 @@ function checkForRepos(bombs) {
 }
 
 function update() {
+
+    if (gameOver===true){
+        return ;
+    }
 
     sky.tilePositionY -= 0.5;
 
