@@ -11,7 +11,7 @@ const config = {
         update : update
     }
 };
-let sky, jet, cursors,ammo,bombs,explosion;
+let sky, jet, cursors,ammo,bombs,explosion,gunShot;
 const game = new Phaser.Game(config);
 
 function preload ()
@@ -25,6 +25,7 @@ function preload ()
        frameWidth:16,
        frameHeight:16
     });
+    this.load.audio('gun-shot','assets/audio/gunshot.wav')
 }
 
 function setObjectVelocity(bombs) {
@@ -62,6 +63,8 @@ function create ()
         frameRate:20,
         hideOnComplete:true
     });
+
+    gunShot = this.sound.add('gun-shot');
 }
 
 function shoot(){
@@ -73,6 +76,7 @@ function shoot(){
 
 function destroyBomb(ammo,bomb) {
 
+    gunShot.play();
     explosion = this.add.sprite(bomb.x,bomb.y,'explosion').setScale(3);
     explosion.play('explode');
     bomb.disableBody(true,true);
