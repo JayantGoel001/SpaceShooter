@@ -21,7 +21,10 @@ function preload ()
     this.load.image('bomb','assets/images/bomb.png');
     this.load.image('ammo','assets/images/ammo.png');
     this.load.image('coin','assets/images/coin.png');
-    this.load.SpriteSheet('ex')
+    this.load.spritesheet('explosion','assets/spritesheets/explosion.png',{
+       frameWidth:16,
+       frameHeight:16
+    });
 }
 
 function setObjectVelocity(bombs) {
@@ -52,6 +55,12 @@ function create ()
     });
 
     setObjectVelocity(bombs);
+
+    this.anims.create({
+        key:'explode',
+        frames:this.anims.generateFrameNumbers('explosion'),
+        frameRate:20
+    });
 }
 
 function shoot(){
