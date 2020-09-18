@@ -17,12 +17,12 @@ class EndGameScene extends Phaser.Scene {
             fontSize:48,
             fill:"#fffff0"
         });
-        this.startBtn = this.add.image(config.width / 2, config.height / 2, 'again');
+        this.startBtn = this.add.image(config.width / 2, config.height / 2, 'again').setScale(0.30);
         this.startBtn.setInteractive();
         this.startBtn.on('pointerdown',this.againGame,this);
     }
     againGame(){
-        this.scene.start('Start');
+        this.scene.start('Play');
     }
 
 }
