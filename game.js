@@ -12,7 +12,7 @@ const config = {
         update : update
     }
 };
-let sky, jet, cursors,ammo,bombs,explosion,gunShot,coinHit,coins;
+let sky, jet, cursors,ammo,bombs,explosion,gunShot,coinHit,coins,end;
 let score = 0;
 let scoreText;
 const game = new Phaser.Game(config);
@@ -31,6 +31,7 @@ function preload ()
     });
     this.load.audio('gun-shot','assets/audio/gunshot.wav');
     this.load.audio('coinhit','assets/audio/coinhit.wav');
+    this.load.audio('end','assets/audio/end.mp3');
 }
 
 function setObjectVelocity(bombs) {
@@ -56,6 +57,7 @@ function collectCoins(jet,coin) {
 }
 
 function endGame(jet,bomb) {
+    end.play();
     this.physics.pause();
     jet.setTint(0xff1000);
     gameOver=true;
@@ -99,6 +101,7 @@ function create ()
     this.physics.add.collider(jet,bombs,endGame,null,this);
     gunShot = this.sound.add('gun-shot');
     coinHit = this.sound.add('coinhit');
+    end = this.sound.add('end');
 
     scoreText  = this.add.text(15,15,'Score : 0',{
         fontSize:31,
