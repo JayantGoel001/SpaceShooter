@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0c67b917-92cf-4b56-a551-93bb699d35c1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/game-start.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/game-start.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spaceShooter.html" beforeDir="false" afterPath="$PROJECT_DIR$/spaceShooter.html" afterDir="false" />
     </list>
@@ -37,6 +38,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jgoel\WebstormProjects\SpaceShooter\assets\images" />
       <recent name="C:\Users\jgoel\WebstormProjects\SpaceShooter" />
     </key>
   </component>
@@ -184,6 +186,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1600449959790" />
+    <state x="548" y="307" key="git4idea.ui.GitResetDialog" timestamp="1600451996585">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="548" y="307" key="git4idea.ui.GitResetDialog/0.0.1536.824@0.0.1536.824" timestamp="1600451996585" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1600445356440">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
