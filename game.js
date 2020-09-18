@@ -1,7 +1,7 @@
 const config = {
     type: Phaser.AUTO,
-    width: window.innerWidth-30,
-    height: window.innerHeight-25,
+    width: window.innerWidth,
+    height: window.innerHeight,
     autoCenter:true,
     physics: {
         default: 'arcade',
@@ -58,15 +58,15 @@ function collectCoins(jet,coin) {
 
 function endGame(jet) {
     end.play();
-    this.physics.pause();
     jet.setTint(0xff1000);
     gameOver=true;
+    this.physics.pause();
 }
 
 function create ()
 {
     sky = this.add.tileSprite(config.width/2, 300,config.width,config.height, 'sky');
-    jet = this.physics.add.image(400,600,'jet').setScale(0.15);
+    jet = this.physics.add.image(config.width/2,600,'jet').setScale(0.15);
     jet.setCollideWorldBounds(true);
     cursors = this.input.keyboard.createCursorKeys();
 
@@ -79,7 +79,7 @@ function create ()
             X:20,
             Y:50,
             stepX: Phaser.Math.Between(10, config.width - 15),
-            stepY: Phaser.Math.Between(15, 300)
+            stepY: Phaser.Math.Between(15, 200)
         }
     });
     coins = this.physics.add.group();
