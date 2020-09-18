@@ -135,7 +135,9 @@ class PlayGameScene extends Phaser.Scene {
     update() {
         if (this.gameOver === true && !this.end.isPlaying) {
             this.gameOver = false;
+
             this.scene.start('EndGame',{totalScore:this.score});
+            this.score =0;
             return;
         }
 
