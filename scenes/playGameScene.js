@@ -45,7 +45,7 @@ class PlayGameScene extends Phaser.Scene {
 
     endGame(jet) {
         this.end.play();
-        this.jet.setTint(0xff1000);
+        jet.setTint(0xff1000);
         this.gameOver = true;
         this.physics.pause();
 
@@ -133,9 +133,8 @@ class PlayGameScene extends Phaser.Scene {
 
 
     update() {
-
-        if (this.gameOver === true && !this.endGame.isPlaying) {
-            this.scene.start('EndGame');
+        if (this.gameOver === true && !this.end.isPlaying) {
+            this.scene.start('EndGame',{totalScore:this.score});
             return;
         }
 
