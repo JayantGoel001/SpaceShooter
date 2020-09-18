@@ -56,7 +56,7 @@ function collectCoins(jet,coin) {
 
 }
 
-function endGame(jet,bomb) {
+function endGame(jet) {
     end.play();
     this.physics.pause();
     jet.setTint(0xff1000);
