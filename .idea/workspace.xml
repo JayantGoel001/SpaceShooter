@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c67b917-92cf-4b56-a551-93bb699d35c1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/space3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/playGameScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/playGameScene.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +55,7 @@
       <workItem from="1600426862778" duration="1039000" />
       <workItem from="1600428025303" duration="847000" />
       <workItem from="1600434164631" duration="9968000" />
+      <workItem from="1600547927437" duration="308000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1600180120171</created>
@@ -237,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600460243283</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Initial Commit">
+      <created>1600548006698</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1600548006698</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
